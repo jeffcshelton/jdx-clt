@@ -1,0 +1,3 @@
+# JDX CLT
+
+The JDX CLT is a command line tool that makes interacting with JDX files simple and intuitive. JDX is the format that makes storing large datasets of images for machine learning easy, especially compared with directly managing directories filled with images that are difficult to maintain, modify, and store in a reasonable amount of space. JDX compresses labeled datasets into one single file that can be uniformly moved, processed, or even transformed all at once. Then, the file can be loaded into your program using the companion libraries, [libjdx](https://github.com/jeffreycshelton/libjdx) or [jdx-rust](https://github.com/jeffreycshelton/jdx-rust).
