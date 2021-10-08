@@ -5,3 +5,11 @@ version = 3
 [[package]]
 name = "jdx-clt"
 version = "0.1.0"
+dependencies = [
+ "jdx-rust",
+]
+
+[[package]]
+name = "jdx-rust"
+version = "0.1.0"
+source = "git+https://github.com/jeffreycshelton/jdx-rust.git#9f0eaa28499256bac3e28e37fcec6822dceb65c6"
