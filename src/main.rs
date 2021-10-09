@@ -1,8 +1,9 @@
+mod commands;
 mod parser;
 mod log;
 
 use log::log_fatal;
-use parser::ParseError;
+use parser::{Command, ParseError};
 use std::env;
 
 fn main() {
@@ -16,4 +17,13 @@ fn main() {
                 ParseError::MissingUnknown(option) => format!("Missing unknown option: '{}'. Please file an issue on the jdx-clt GitHub repository for maintainers to add a proper error.", option),
             }
         ));
+
+    match command {
+        Command::Generate { inputs, outputs } => commands::generate(inputs, outputs),
+        Command::Concatenate { inputs, outputs } => commands::concatenate(inputs, outputs),
+        Command::Expand { inputs, outputs } => commands::expand(inputs, outputs),
+        Command::Summarize { inputs } => commands::summarize(inputs),
+        Command::Version => commands::info::version(),
+        Command::Help => commands::info::help(),
+    }
 }
