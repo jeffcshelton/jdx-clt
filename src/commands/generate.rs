@@ -1,3 +1,3 @@
-pub fn generate(inputs: Vec<String>, outputs: Vec<String>) {
+pub fn generate(input: String, output: String) {
 
 }

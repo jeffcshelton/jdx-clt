@@ -1,3 +1,3 @@
-pub fn expand(inputs: Vec<String>, outputs: Vec<String>) {
+pub fn expand(input: String, output: String) {
 
 }

@@ -1,7 +1,9 @@
+use crate::log::log_fatal;
+
 pub enum Command {
-    Generate { inputs: Vec<String>, outputs: Vec<String> },
-    Concatenate { inputs: Vec<String>, outputs: Vec<String> },
-    Expand { inputs: Vec<String>, outputs: Vec<String> },
+    Generate { input: String, output: String },
+    Concatenate { inputs: Vec<String>, output: String },
+    Expand { input: String, output: String },
     Summarize { inputs: Vec<String> },
     Version,
     Help,
@@ -56,10 +58,46 @@ pub fn parse_arguments(args: Vec<String>) -> Result<Command, ParseError> {
     }
 
     Ok(match args[1].as_str() {
-        "generate" | "gen" => Command::Generate { inputs: get_params(&args, "-i")?, outputs: get_params(&args, "-o")? },
-        "concatenate" | "concat" => Command::Concatenate { inputs: get_params(&args, "-i")?, outputs: get_params(&args, "-o")? },
-        "expand" | "exp" => Command::Expand { inputs: get_params(&args, "-i")?, outputs: get_params(&args, "-o")? },
-        "summarize" => Command::Summarize { inputs: get_params(&args, "-i")? },
+        "generate" | "gen" => {
+            let inputs = get_params(&args, "-i")?;
+            let outputs = get_params(&args, "-o")?;
+
+            if inputs.len() != 1 { log_fatal("Must specify only one input path."); }
+            if outputs.len() != 1 { log_fatal("Must specify only one output path."); }
+
+            Command::Generate {
+                input: inputs[0].clone(),
+                output: outputs[0].clone(),
+            }
+        },
+        "concatenate" | "concat" => {
+            let inputs = get_params(&args, "-i")?;
+            let outputs = get_params(&args, "-o")?;
+
+            if outputs.len() != 1 { log_fatal("Must specify only one output path."); }
+
+            Command::Concatenate {
+                inputs: inputs,
+                output: outputs[0].clone(),
+            }
+        },
+        "expand" | "exp" => {
+            let inputs = get_params(&args, "-i")?;
+            let outputs = get_params(&args, "-o")?;
+
+            if inputs.len() != 1 { log_fatal("Must specify only one input path."); }
+            if outputs.len() != 1 { log_fatal("Must specify only one output path."); }
+
+            Command::Expand {
+                input: inputs[0].clone(),
+                output: outputs[0].clone(),
+            }
+        },
+        "summarize" => {
+            Command::Summarize {
+                inputs: get_params(&args, "-i")?
+            }
+        },
         "version" => Command::Version,
         "help" => Command::Help,
         unknown => return Err(ParseError::InvalidCommand(unknown.to_string())),

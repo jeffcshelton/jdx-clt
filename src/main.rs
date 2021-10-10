@@ -20,9 +20,9 @@ fn main() {
         ));
 
     match command {
-        Command::Generate { inputs, outputs } => commands::generate(inputs, outputs),
-        Command::Concatenate { inputs, outputs } => commands::concatenate(inputs, outputs),
-        Command::Expand { inputs, outputs } => commands::expand(inputs, outputs),
+        Command::Generate { input, output } => commands::generate(input, output),
+        Command::Concatenate { inputs, output } => commands::concatenate(inputs, output),
+        Command::Expand { input, output } => commands::expand(input, output),
         Command::Summarize { inputs } => commands::summarize(inputs),
         Command::Version => commands::info::version(),
         Command::Help => commands::info::help(),
