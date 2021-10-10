@@ -74,6 +74,7 @@ pub fn parse_arguments(args: Vec<String>) -> Result<Command, ParseError> {
             let inputs = get_params(&args, "-i")?;
             let outputs = get_params(&args, "-o")?;
 
+            if inputs.len() < 2 { log_fatal("Must specify at least two input paths."); }
             if outputs.len() != 1 { log_fatal("Must specify only one output path."); }
 
             Command::Concatenate {
