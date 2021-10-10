@@ -3,7 +3,9 @@ name = "jdx-clt"
 version = "0.1.0"
 edition = "2018"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[[bin]]
+name = "jdx"
+path = "src/main.rs"
 
 [dependencies]
 jdx-rust = { git = "https://github.com/jeffreycshelton/jdx-rust" }
