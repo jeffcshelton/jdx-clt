@@ -1,5 +1,12 @@
-pub fn version() {
+use jdx_rust::jdx;
 
+pub fn version() {
+    let ver = jdx::Version::current();
+
+    print!("
+\x1b[1mJeffrey's Dataset Indexing Tool (JDX)\x1b[0m \x1b[34;1mv{}.{}.{}\x1b[0m
+Copyright \x1b[1mJeffrey C. Shelton\x1b[0m 2021 (MIT License)
+", ver.major, ver.minor, ver.patch);
 }
 
 pub fn help() {

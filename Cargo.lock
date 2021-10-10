@@ -12,4 +12,4 @@ dependencies = [
 [[package]]
 name = "jdx-rust"
 version = "0.1.0"
-source = "git+https://github.com/jeffreycshelton/jdx-rust.git#9f0eaa28499256bac3e28e37fcec6822dceb65c6"
+source = "git+https://github.com/jeffreycshelton/jdx-rust#c11d4e83a49c71e8ae3e0b00a98ba21d2e20d09a"
