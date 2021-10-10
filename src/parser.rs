@@ -10,6 +10,7 @@ pub enum Command {
 pub enum ParseError {
     NoArguments,
     InvalidCommand(String),
+    NoParameters(String),
 
     MissingInput,
     MissingOutput,
