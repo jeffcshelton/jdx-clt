@@ -14,7 +14,7 @@ pub fn summarize(inputs: Vec<String>) {
             continue;
         }
 
-        let header = Header::from_file(&path);
+        let header = Header::read_from_file(&path);
         if header.is_err() {
             log_error(format!("Failed to open file '{}'. File could be corrupted, not exist, or require permissions.", path));
             continue;
