@@ -30,13 +30,20 @@ impl ParseError {
 fn get_params(args: &Vec<String>, option: &str) -> Result<Vec<String>, ParseError> {
     for a in 2..args.len() {
         if args[a] == option {
-            let mut p = a;
+            let param_start = a + 1;
+            let mut param_end = param_start;
 
-            while !args[p].starts_with('-') && p < args.len() {
-                p += 1;
+            while param_end < args.len() && !args[param_end].starts_with('-') {
+                param_end += 1;
             }
 
-            return Ok(args[a..p].to_vec())
+            // Option was specified but no parameters were supplied
+            if param_end == param_start {
+                return Err(ParseError::NoParameters(option.to_string()))
+            }
+
+            // Returns a vector of parameters whose len() must be > 0
+            return Ok(args[param_start..param_end].to_vec())
         }
     }
 
