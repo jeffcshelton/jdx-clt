@@ -1,11 +1,12 @@
 use jdx_rust::jdx::{
+    self,
     Header,
     ColorType,
 };
 
 use crate::log::log_error;
 
-pub fn summarize(inputs: Vec<String>) {
+pub fn summarize(inputs: Vec<String>) -> jdx::Result<()> {
     for path in inputs {
         println!();
 
@@ -35,4 +36,5 @@ pub fn summarize(inputs: Vec<String>) {
     }
 
     println!();
+    Ok(())
 }
