@@ -9,3 +9,4 @@ path = "src/main.rs"
 
 [dependencies]
 jdx-rust = { git = "https://github.com/jeffreycshelton/jdx-rust" }
+image = "^0.23.14"
