@@ -20,7 +20,7 @@ pub fn summarize(inputs: Vec<String>) -> jdx::Result<()> {
         println!("Number of images: \x1b[1m{}\x1b[0m", header.item_count);
 
         if !path.ends_with(".jdx") {
-            log_warning(format!("JDX files should end with extension '.jdx'."));
+            log_warning("JDX files should end with extension '.jdx'.");
         }
     }
 
