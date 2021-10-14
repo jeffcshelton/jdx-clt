@@ -111,18 +111,17 @@ pub fn generate(input: String, output: String) -> jdx::Result<()> {
                 return Err(jdx::Error::UnequalBitDepths)
             }
 
-            dataset.images.push(jdx::Image {
+            dataset.items.push(jdx::Item {
                 data: image.as_bytes().to_vec(),
                 width: width,
                 height: height,
                 bit_depth: bit_depth,
+                label: category_index,
             });
-
-            dataset.labels.push(category_index);
         }
     }
 
-    dataset.header.item_count = dataset.images.len() as u64;
+    dataset.header.item_count = dataset.items.len() as u64;
     dataset.header.version = jdx::Version::current();
     dataset.write_to_path(output)?;
 
