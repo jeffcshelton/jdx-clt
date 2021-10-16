@@ -111,12 +111,12 @@ pub fn parse_arguments(args: Vec<String>) -> Result<Command, ParseError> {
                 output: outputs[0].clone(),
             }
         },
-        "summarize" => {
+        "summarize" | "sum" => {
             Command::Summarize {
                 inputs: get_params(&args, "-i")?
             }
         },
-        "version" => Command::Version,
+        "version" | "ver" => Command::Version,
         "help" => Command::Help,
         unknown => return Err(ParseError::InvalidCommand(unknown.to_string())),
     })
