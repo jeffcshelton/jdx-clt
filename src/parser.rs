@@ -1,3 +1,4 @@
+use std::{fmt, error::Error};
 use crate::log::log_fatal;
 
 pub enum Command {
@@ -9,6 +10,7 @@ pub enum Command {
     Help,
 }
 
+#[derive(Debug)]
 pub enum ParseError {
     NoArguments,
     InvalidCommand(String),
@@ -28,6 +30,21 @@ impl ParseError {
         }
     }
 }
+
+impl fmt::Display for ParseError {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        match self {
+            Self::NoArguments => write!(f, "No arguments given."),
+            Self::InvalidCommand(command) => write!(f, "Unrecognized command: '{}'.", command),
+            Self::NoParameters(option) => write!(f, "No parameters given for option '{}'.", option),
+            Self::MissingInput => write!(f, "Missing input path(s). Specify with option '-i'."),
+            Self::MissingOutput => write!(f, "Missing output path(s). Specify with option '-o'."),
+            Self::MissingUnknown(option) => write!(f, "Missing unknown option: '{}'. Please file an issue on the jdx-clt GitHub repository for maintainers to add a proper error.", option),
+        }
+    }
+}
+
+impl Error for ParseError {}
 
 fn get_params(args: &Vec<String>, option: &str) -> Result<Vec<String>, ParseError> {
     for a in 2..args.len() {
