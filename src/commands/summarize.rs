@@ -14,7 +14,7 @@ pub fn summarize(inputs: Vec<String>) -> jdx::Result<()> {
 		};
 
 		println!("=== \x1b[33;1m{}\x1b[0m ===", path);
-		println!("JDX File \x1b[34mv{}.{}.{}\x1b[0m", header.version.major, header.version.minor, header.version.patch);
+		println!("JDX File \x1b[34m{}\x1b[0m", header.version.to_string());
 		println!("Color type: {} ({} bits)", color_text, header.bit_depth);
 		println!("Image size: \x1b[1m{}\x1b[0m x \x1b[1m{}\x1b[0m", header.image_width, header.image_height);
 		println!("Number of images: \x1b[1m{}\x1b[0m", header.item_count);
