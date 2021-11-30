@@ -52,9 +52,9 @@ checksum = "3d7b894f5411737b7867f4827955924d7c254fc9f4d91a6aad6b097804b1018b"
 
 [[package]]
 name = "crc32fast"
-version = "1.2.1"
+version = "1.2.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "81156fece84ab6a9f2afdb109ce3ae577e42b1228441eded99bd77f627953b1a"
+checksum = "3825b1e8580894917dc4468cb634a1b4e9745fddc854edad72d9c04644c0319f"
 dependencies = [
  "cfg-if",
 ]
@@ -159,7 +159,7 @@ dependencies = [
 
 [[package]]
 name = "jdx-clt"
-version = "0.2.0"
+version = "0.3.0-alpha"
 dependencies = [
  "image",
  "jdx-rust",
@@ -167,8 +167,8 @@ dependencies = [
 
 [[package]]
 name = "jdx-rust"
-version = "0.1.0"
-source = "git+https://github.com/jeffreycshelton/jdx-rust#cb64611cbdd3cb458458b516eea83bc389d5d231"
+version = "0.2.0"
+source = "git+https://github.com/jeffreycshelton/jdx-rust?tag=v0.3.0-alpha#cd849f95bb1b28635ddcd47523a5f02fc6607596"
 
 [[package]]
 name = "jpeg-decoder"
@@ -187,9 +187,9 @@ checksum = "e2abad23fbc42b3700f2f279844dc832adb2b2eb069b2df918f455c4e18cc646"
 
 [[package]]
 name = "libc"
-version = "0.2.104"
+version = "0.2.108"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "7b2f96d100e1cf1929e7719b7edb3b90ab5298072638fccd77be9ce942ecdfce"
+checksum = "8521a1b57e76b1ec69af7599e75e38e7b7fad6610f037db8c79b127201b5d119"
 
 [[package]]
 name = "memoffset"
