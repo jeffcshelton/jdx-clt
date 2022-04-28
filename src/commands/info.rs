@@ -1,5 +1,3 @@
-use jdx_rust::jdx;
-
 pub fn version() {
 	let ver = jdx::Version::current();
 
