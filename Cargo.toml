@@ -1,7 +1,7 @@
 [package]
 name = "jdx-clt"
-version = "0.3.0-alpha"
-edition = "2018"
+version = "0.4.0-alpha"
+edition = "2021"
 
 [[bin]]
 name = "jdx"
