@@ -1,5 +1,5 @@
 use std::{fmt, error::Error};
-use crate::log::log_fatal;
+use crate::log_fatal;
 
 pub enum Command {
 	Generate { input: String, output: String },
