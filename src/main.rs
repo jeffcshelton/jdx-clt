@@ -2,11 +2,12 @@ mod commands;
 mod parser;
 mod log;
 
-use log::log_fatal;
-use parser::Command;
-use std::env;
+use log::*;
 
 fn main() {
+	use parser::Command;
+	use std::env;
+
 	let command = parser::parse_arguments(env::args().collect())
 		.unwrap_or_else(|error| log_fatal(error));
 
