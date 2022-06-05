@@ -1,7 +1,7 @@
-use std::{path::PathBuf, fs, ffi::OsStr};
-use image::{io::Reader as ImageReader, GenericImageView};
+use image::{GenericImageView, io::Reader as ImageReader};
+use std::{ffi::OsStr, fs, path::PathBuf};
 use crate::{log_fatal, log_warning};
-use jdx::{Dataset, Image, Header};
+use jdx::{Dataset, Header, Image};
 
 pub fn generate(input: String, output: String) -> jdx::Result<()> {
 	let output_path = PathBuf::from(output);
@@ -85,11 +85,11 @@ pub fn generate(input: String, output: String) -> jdx::Result<()> {
 					.as_mut()
 					.unwrap()
 					.push(Image {
-						raw_data: image.as_bytes().to_vec(),
+						raw_data: image.as_bytes(),
 						width: image_width,
 						height: image_height,
 						bit_depth: bit_depth,
-						label: class_name.clone(),
+						label: &class_name,
 						label_index: i as u16,
 					})?;
 			}
