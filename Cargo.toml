@@ -8,5 +8,5 @@ name = "jdx"
 path = "src/main.rs"
 
 [dependencies]
-jdx = { git = "https://github.com/jeffreycshelton/jdx-rust", tag = "v0.4.0" }
+jdx = { git = "https://github.com/jeffreycshelton/jdx-rust", tag = "v0.4.1" }
 image = "^0.23.14"

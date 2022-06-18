@@ -15,41 +15,41 @@ pub fn expand(input: String, output: String) -> jdx::Result<()> {
 		log_fatal("Failed to create output directory.");
 	}
 
-	let bit_depth = dataset.header().bit_depth;
+	let header = dataset.header();
 
-	for (i, image) in dataset.iter().enumerate() {
-		let label_path = output_path.join(image.label);
+	for (i, (image, label_index)) in dataset.iter().enumerate() {
+		let label_path = output_path.join(&header.labels[usize::from(*label_index)]);
 		let image_path = label_path.join(i.to_string() + ".png");
 
 		if !label_path.exists() {
 			fs::create_dir(&label_path)?;
 		}
 
-		if bit_depth == 8 {
+		if header.bit_depth == 8 {
 			let image = GrayImage::from_raw(
-				image.width as u32,
-				image.height as u32,
-				image.raw_data.to_vec()
+				header.image_width.into(),
+				header.image_height.into(),
+				image.to_vec()
 			).unwrap();
 
 			if image.save_with_format(&image_path, ImageFormat::Png).is_err() {
 				log_fatal("Failed to save image to path.");
 			}
-		} else if bit_depth == 24 {
+		} else if header.bit_depth == 24 {
 			let image = RgbImage::from_raw(
-				image.width as u32,
-				image.height as u32,
-				image.raw_data.to_vec(),
+				header.image_width.into(),
+				header.image_height.into(),
+				image.to_vec()
 			).unwrap();
 
 			if image.save_with_format(&image_path, ImageFormat::Png).is_err() {
 				log_fatal("Failed to save image to path.");
 			}
-		} else if bit_depth == 32 {
+		} else if header.bit_depth == 32 {
 			let image = RgbaImage::from_raw(
-				image.width as u32,
-				image.height as u32,
-				image.raw_data.to_vec(),
+				header.image_width.into(),
+				header.image_height.into(),
+				image.to_vec()
 			).unwrap();
 
 			if image.save_with_format(&image_path, ImageFormat::Png).is_err() {

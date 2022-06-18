@@ -1,7 +1,7 @@
 use image::{GenericImageView, io::Reader as ImageReader};
 use std::{ffi::OsStr, fs, path::PathBuf};
 use crate::{log_fatal, log_warning};
-use jdx::{Dataset, Header, Image};
+use jdx::{Dataset, Header};
 
 pub fn generate(input: String, output: String) -> jdx::Result<()> {
 	let output_path = PathBuf::from(output);
@@ -31,7 +31,7 @@ pub fn generate(input: String, output: String) -> jdx::Result<()> {
 			continue;
 		}
 
-		if i > u16::MAX as usize {
+		if i > u16::MAX.into() {
 			log_fatal("The number of classes in the dataset exceeds the maximum of 65,536.");
 		}
 
@@ -84,14 +84,10 @@ pub fn generate(input: String, output: String) -> jdx::Result<()> {
 				dataset
 					.as_mut()
 					.unwrap()
-					.push(Image {
-						raw_data: image.as_bytes(),
-						width: image_width,
-						height: image_height,
-						bit_depth: bit_depth,
-						label: &class_name,
-						label_index: i as u16,
-					})?;
+					.push(
+						Box::<[u8]>::from(image.as_bytes()),
+						&class_name
+					)?;
 			}
 		} else {
 			log_warning(format!("Skipping file '{}': Cannot iterate over its contents.", class_name));
