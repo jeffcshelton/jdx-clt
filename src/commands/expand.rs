@@ -3,9 +3,8 @@ use std::{path::PathBuf, fs};
 use crate::log_fatal;
 use jdx::Dataset;
 
-pub fn expand(input: String, output: String) -> jdx::Result<()> {
-	let dataset = Dataset::read_from_path(input)?;
-	let output_path = PathBuf::from(output);
+pub fn expand(input_path: PathBuf, output_path: PathBuf) -> jdx::Result<()> {
+	let dataset = Dataset::read_from_path(input_path)?;
 
 	if output_path.exists() {
 		log_fatal("Invalid output path: Directory already exists.");

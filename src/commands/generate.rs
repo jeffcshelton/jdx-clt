@@ -3,9 +3,7 @@ use std::{ffi::OsStr, fs, path::PathBuf};
 use crate::{log_fatal, log_warning};
 use jdx::{Dataset, Header};
 
-pub fn generate(input: String, output: String) -> jdx::Result<()> {
-	let output_path = PathBuf::from(output);
-
+pub fn generate(input_path: PathBuf, output_path: PathBuf) -> jdx::Result<()> {
 	if output_path.exists() {
 		log_fatal("Invalid output path: File already exists.");
 	}
@@ -16,7 +14,7 @@ pub fn generate(input: String, output: String) -> jdx::Result<()> {
 
 	let mut dataset: Option<Dataset> = None;
 
-	for (i, class) in fs::read_dir(input)?.enumerate() {
+	for (i, class) in fs::read_dir(input_path)?.enumerate() {
 		let class_path = class
 			.unwrap()
 			.path();
