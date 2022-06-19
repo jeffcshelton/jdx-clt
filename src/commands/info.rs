@@ -21,7 +21,6 @@ Commands:
   help                    Show this help page.
 
 Options:
-  -i <filename(s)...>     Specifies input file path(s).
   -o <filename(s)...>     Specifies output file path(s).
 ");
 }
