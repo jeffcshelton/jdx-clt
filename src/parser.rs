@@ -28,8 +28,8 @@ impl fmt::Display for ParseError {
 			Self::TooManyArguments => write!(f, "Too many arguments."),
 			Self::UnrecognizedOption(option) => write!(f, "Unrecognized option: '{option}'."),
 			Self::UnrecognizedCommand(command) => write!(f, "Unrecognized command: '{command}'."),
-			Self::MissingInput => write!(f, "Missing input path(s). Specify with option '-i'."),
-			Self::MissingOutput => write!(f, "Missing output path(s). Specify with option '-o'."),
+			Self::MissingInput => write!(f, "Missing input path(s)."),
+			Self::MissingOutput => write!(f, "Missing output path(s)."),
 		}
 	}
 }

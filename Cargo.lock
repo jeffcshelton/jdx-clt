@@ -177,7 +177,7 @@ dependencies = [
 
 [[package]]
 name = "jdx-clt"
-version = "0.4.0"
+version = "0.4.1"
 dependencies = [
  "image",
  "jdx",
