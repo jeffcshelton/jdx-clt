@@ -46,7 +46,7 @@ And it will give an output like this:
 
 ```
 === input_file_1.jdx ===
-JDX File v0.2.0
+JDX Specification v0
 Color type: RGB (24 bits)
 Image size: 28 x 28
 Number of images: 2500
