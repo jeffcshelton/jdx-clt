@@ -1,10 +1,12 @@
 pub fn version() {
-	let ver = jdx::Version::current();
+  let version_str = option_env!("CARGO_PKG_VERSION")
+    .map(|ver| "v".to_owned() + ver)
+    .unwrap_or("<unknown version>".to_owned());
 
 	println!("
-\x1b[1mJeffrey's Dataset Indexing Tool (JDX)\x1b[0m \x1b[34;1m{}\x1b[0m
-Copyright \x1b[1mJeffrey C. Shelton\x1b[0m 2021 (MIT License)
-", ver.to_string());
+\x1b[33;1m(JDX)\x1b[39m Jeffrey's Dataset Indexing Tool \x1b[34m{version_str}\x1b[0m
+Copyright \x1b[32;1mJeffrey C. Shelton\x1b[0m 2021 (MIT License)
+");
 }
 
 pub fn help() {

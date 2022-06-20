@@ -1,6 +1,6 @@
 [package]
 name = "jdx-clt"
-version = "0.4.1"
+version = "0.5.0"
 edition = "2021"
 
 [[bin]]
@@ -8,5 +8,5 @@ name = "jdx"
 path = "src/main.rs"
 
 [dependencies]
-jdx = { git = "https://github.com/jeffreycshelton/jdx-rust", tag = "v0.4.1" }
+jdx = { git = "https://github.com/jeffreycshelton/jdx-rust", tag = "v0.5.0" }
 image = "^0.23.14"

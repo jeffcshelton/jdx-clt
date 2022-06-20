@@ -19,7 +19,7 @@ pub fn summarize(input_paths: Vec<PathBuf>) -> jdx::Result<()> {
 		println!("Color type: {} ({} bits)", color_text, header.bit_depth);
 		println!("Image size: \x1b[1m{}\x1b[0m x \x1b[1m{}\x1b[0m", header.image_width, header.image_height);
 		println!("Number of images: \x1b[1m{}\x1b[0m", header.image_count);
-		println!("Classes: \x1b[1m{:?}\x1b[0m", header.labels);
+		println!("Classes: \x1b[1m{:?}\x1b[0m", header.classes);
 
 		if path.extension().and_then(OsStr::to_str) != Some("jdx") {
 			log_warning("JDX files should end with extension '.jdx'.");

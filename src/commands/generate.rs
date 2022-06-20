@@ -70,12 +70,12 @@ pub fn generate(input_path: PathBuf, output_path: PathBuf) -> jdx::Result<()> {
 
 				if dataset.is_none() {
 					dataset = Some(Dataset::with_header(Header {
-						version: jdx::Version::current(),
+						version: jdx::Version::V0,
 						image_width: image_width,
 						image_height: image_height,
 						bit_depth: bit_depth,
 						image_count: 0,
-						labels: Vec::new(),
+						classes: Vec::new(),
 					}));
 				}
 

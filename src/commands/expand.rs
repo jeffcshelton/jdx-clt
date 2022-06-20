@@ -14,10 +14,10 @@ pub fn expand(input_path: PathBuf, output_path: PathBuf) -> jdx::Result<()> {
 		log_fatal("Failed to create output directory.");
 	}
 
-	let header = dataset.header();
+	let header = dataset.get_header();
 
 	for (i, (image, label_index)) in dataset.iter().enumerate() {
-		let label_path = output_path.join(&header.labels[usize::from(*label_index)]);
+		let label_path = output_path.join(&header.classes[usize::from(*label_index)]);
 		let image_path = label_path.join(i.to_string() + ".png");
 
 		if !label_path.exists() {
