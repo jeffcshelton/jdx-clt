@@ -1,6 +1,6 @@
 # JDX CLT
 
-The JDX CLT is a command line tool that makes interacting with JDX files simple and intuitive. JDX is the format that makes storing large datasets of images for machine learning easy, especially compared with directly managing directories filled with images that are difficult to maintain, modify, and store in a reasonable amount of space. JDX compresses labeled datasets into one single file that can be uniformly moved, processed, or even transformed all at once. Then, the file can be loaded into your program using the companion libraries, [libjdx](https://github.com/jeffreycshelton/libjdx) or [jdx-rust](https://github.com/jeffreycshelton/jdx-rust).
+The JDX CLT is a command line tool that makes interacting with JDX files simple and intuitive. JDX is the format that makes storing large datasets of images for machine learning easy, especially compared with directly managing directories filled with images that are difficult to maintain, modify, and store in a reasonable amount of space. JDX compresses labeled datasets into one single file that can be uniformly moved, processed, or even transformed all at once. Then, the file can be loaded into your program using the companion libraries, [jdx-python](https://github.com/jeffreycshelton/jdx-python) or [jdx-rust](https://github.com/jeffreycshelton/jdx-rust).
 
 ## Install
 
@@ -20,41 +20,42 @@ $ cp target/release/jdx /usr/local/bin
 
 After running this, you should be able to use the `jdx` command without issue. ***DO NOT USE THIS METHOD IF THE RECOMMENDED METHOD ALREADY WORKED.***
 
-*Windows is not yet supported for JDX but will be supported at least by the release of v1.0.0*
-
 ## Usage
 
-Generating a new JDX file from a directory of labeled images is simple. If you have a set of images and want to compress them into one JDX file, arrange them in the following structure, where the images are in a directory named with integers starting from zero as categories *(support for named category directories is coming soon)*. Image names do not matter as long as directories are named properly:
+Generating a new JDX file from a directory of labeled images is simple. If you have a set of images and want to compress them into one JDX file, arrange them in the following structure, where the images are in a directory with the name of their class (category). Image names do not matter, but directory names will be stored in the JDX file as the class name.
 
 ```
 parent_directory
   |
-  0 - image.png ...
-  1 - image.png ...
-  2 - image.png ...
+  class_one - image.png ...
+  class_two - image.png ...
+  class_three - image.png ...
   .
   .
 ```
 
 Then, run this command in your terminal:
 
-`$ jdx generate -i <parent_directory> -o <output_file>.jdx`
+`$ jdx generate <parent_directory> <output_file>.jdx`
 
-If you have a JDX file and want a summary of its contents, you can run this command:
+If you have JDX file(s) and want summaries of their contents, you can run this command:
 
-`$ jdx summarize -i <input_file>.jdx`
+`$ jdx info <input_file_1>.jdx <input_file_2>.jdx ...`
 
 And it will give an output like this:
 
 ```
-=== input_file.jdx ===
+=== input_file_1.jdx ===
 JDX File v0.2.0
 Color type: RGB (24 bits)
 Image size: 28 x 28
 Number of images: 2500
+
+=== input_file_2.jdx ===
+...
 ```
 
-If you want a complete list of all commands and options, run `jdx help`.
+For a complete list of all commands and options, run `jdx help`.
 
 ## Development
 
