@@ -1,9 +1,9 @@
 mod concatenate;
 mod expand;
 mod generate;
-mod summarize;
+mod info;
 
 pub use concatenate::concatenate;
 pub use expand::expand;
 pub use generate::generate;
-pub use summarize::summarize;
+pub use info::info;

@@ -4,7 +4,7 @@ pub enum Command {
 	Generate { input_path: PathBuf, output_path: PathBuf },
 	Concatenate { input_paths: Vec<PathBuf>, output_path: PathBuf },
 	Expand { input_path: PathBuf, output_path: PathBuf },
-	Summarize { input_paths: Vec<PathBuf> },
+	Info { input_paths: Vec<PathBuf> },
 	Version,
 	Help,
 }
@@ -98,12 +98,12 @@ pub fn parse_arguments() -> Result<Command, ParseError> {
 					output_path: output_path,
 				}
 			},
-			"summarize" | "sum" => {
+			"info" => {
 				let input_paths = args
 					.map(|arg| PathBuf::from(arg))
 					.collect();
 						
-				Command::Summarize {
+				Command::Info {
 					input_paths: input_paths
 				}
 			},

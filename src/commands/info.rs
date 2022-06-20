@@ -2,7 +2,7 @@ use std::{path::PathBuf, ffi::OsStr};
 use crate::log_warning;
 use jdx::Header;
 
-pub fn summarize(input_paths: Vec<PathBuf>) -> jdx::Result<()> {
+pub fn info(input_paths: Vec<PathBuf>) -> jdx::Result<()> {
 	for path in input_paths {
 		println!();
 
