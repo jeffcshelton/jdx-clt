@@ -15,7 +15,7 @@ pub fn info(input_paths: Vec<PathBuf>) -> jdx::Result<()> {
 		};
 
 		println!("=== \x1b[33;1m{}\x1b[0m ===", path.to_string_lossy());
-		println!("JDX File \x1b[34m{}\x1b[0m", header.version.to_string());
+		println!("JDX Specification \x1b[34m{}\x1b[0m", header.version.to_string());
 		println!("Color type: {} ({} bits)", color_text, header.bit_depth);
 		println!("Image size: \x1b[1m{}\x1b[0m x \x1b[1m{}\x1b[0m", header.image_width, header.image_height);
 		println!("Number of images: \x1b[1m{}\x1b[0m", header.image_count);
