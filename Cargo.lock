@@ -170,6 +170,7 @@ dependencies = [
 [[package]]
 name = "jdx"
 version = "0.5.0"
+source = "git+https://github.com/jeffreycshelton/jdx-rust?tag=v0.5.0#b40f3d9d80d7e1242c2e0eb000e3e6dfd5af8646"
 dependencies = [
  "flate2",
 ]
